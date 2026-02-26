@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Discord Bot",
+      "request": "launch",
+      "mainClass": "org.example.Main",
+      "projectName": "discord-random-bot",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
