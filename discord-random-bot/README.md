@@ -1,25 +1,85 @@
-# discord-random-bot
+# 🎲 Discord Dice Bot (Java)
 
-초간단 디스코드 랜덤 숫자 봇 (Java 17 + JDA 5)
+간단한 텍스트 명령형 주사위 봇이 아니라,
+**버튼 + 모달 UI로 연속 사용 가능한 디스코드 주사위 봇**입니다.
 
-## 기능
-- `!랜덤` → 1~10
-- `!랜덤 최소 최대` → 지정 범위 랜덤
+## 주요 기능
 
-## 실행 방법 (PowerShell)
+- `!주사위` 입력 시 UI 패널 표시
+- `🎲 굴리기` 버튼으로 같은 범위에서 연속 랜덤 생성
+- `⚙ 범위설정` 버튼으로 최소/최대값 변경
+- 기본 범위: `1 ~ 999`
+- 입력 검증
+  - 최소값은 1 이상
+  - 최대값은 999 이하
+  - 최소값 ≤ 최대값
 
-1) 토큰 설정
-```powershell
-$env:DISCORD_TOKEN='여기에_디스코드_봇_토큰'
+추가로 레거시 텍스트 명령도 지원:
+- `!랜덤`
+- `!랜덤 최소 최대` (예: `!랜덤 5 20`)
+
+---
+
+## 기술 스택
+
+- Java 17+
+- JDA 5
+- Gradle (Wrapper 포함)
+
+---
+
+## 로컬 실행
+
+### 1) 프로젝트 클론
+```bash
+git clone <YOUR_REPO_URL>
+cd discord-random-bot
 ```
 
-2) 실행
+### 2) 환경변수 설정
+Windows PowerShell:
 ```powershell
+$env:DISCORD_TOKEN="여기에_봇_토큰"
+```
+
+또는 `.env` 파일을 만들어 사용:
+```env
+DISCORD_TOKEN=여기에_봇_토큰
+```
+
+### 3) 실행
+```bash
 ./gradlew run
 ```
 
-> gradlew가 없다면 IntelliJ에서 Gradle 프로젝트로 열고 `Main.main()` 실행해도 됨.
+---
 
-## 디스코드 포털 설정
-- Bot > Privileged Gateway Intents > **MESSAGE CONTENT INTENT** 켜기
-- 봇을 서버에 초대할 때 `bot` scope 포함
+## 디스코드 개발자 포털 설정
+
+1. **Bot 생성**
+2. **Privileged Gateway Intents**
+   - `MESSAGE CONTENT INTENT` 활성화
+3. OAuth2 URL Generator
+   - Scopes: `bot`, `applications.commands`
+   - Bot Permissions: `Send Messages`, `Read Message History` (필요 시 추가)
+
+---
+
+## 보안 주의사항
+
+- ❌ 토큰을 코드에 하드코딩하지 마세요.
+- ❌ `.env` 파일을 커밋하지 마세요.
+- ⚠️ 토큰이 노출되었다면 디스코드 포털에서 **Reset Token** 하세요.
+
+`.gitignore`에 `.env`는 포함되어 있습니다.
+
+---
+
+## 포트폴리오 포인트
+
+이 프로젝트는 단순 랜덤 생성이 아니라,
+- 채팅 UX 개선(버튼/모달)
+- 입력 검증 로직
+- 반복 사용 시나리오(상태 유지형 범위 버튼)
+
+를 포함해 **실사용 인터랙션 설계 경험**을 보여주는 데 목적이 있습니다.
