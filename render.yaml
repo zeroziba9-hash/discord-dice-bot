@@ -1,0 +1,12 @@
+services:
+  - type: worker
+    name: discord-dice-bot
+    runtime: java
+    rootDir: discord-random-bot
+    plan: free
+    buildCommand: ./gradlew build -x test
+    startCommand: ./gradlew run
+    autoDeploy: true
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false

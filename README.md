@@ -45,7 +45,19 @@
 
 ---
 
-## 4) 실행 방법
+## 4) 배포 (무료 플랜 - Render)
+
+`render.yaml`을 포함해놔서, Render에서 저장소만 연결하면 바로 워커로 배포됩니다.
+
+1. Render 가입/로그인
+2. **New + → Blueprint**
+3. GitHub 저장소 `zeroziba9-hash/discord-dice-bot` 선택
+4. 환경변수 `DISCORD_TOKEN` 입력
+5. Deploy
+
+> 배포 후에는 PC를 꺼도 봇이 계속 동작합니다.
+
+## 5) 로컬 실행 방법
 
 ### 1) 저장소 클론
 ```bash
