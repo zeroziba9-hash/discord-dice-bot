@@ -141,7 +141,7 @@ public class Main extends ListenerAdapter {
 
         String content = event.getMessage().getContentRaw().trim();
 
-        if (content.equals("/randomui")) {
+        if (content.equals("!주사위")) {
             event.getChannel().sendMessageEmbeds(buildPanelEmbed(1, 999, null).build())
                     .setActionRow(buildRollButton(1, 999), buildSetButton(1, 999))
                     .queue();
