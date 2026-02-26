@@ -135,6 +135,18 @@ public class Main extends ListenerAdapter {
 
         String content = event.getMessage().getContentRaw().trim();
 
+        if (content.equals("/randomui")) {
+            EmbedBuilder embed = new EmbedBuilder()
+                    .setTitle("🎲 랜덤 숫자 생성기")
+                    .setDescription("버튼을 눌러 최소/최대값을 입력해줘.\n기본값: **1 ~ 999**")
+                    .setColor(new Color(88, 101, 242));
+
+            event.getChannel().sendMessageEmbeds(embed.build())
+                    .setActionRow(Button.primary(BTN_OPEN_RANDOM_MODAL, "🎲 생성"))
+                    .queue();
+            return;
+        }
+
         if (content.equals("!랜덤")) {
             int n = ThreadLocalRandom.current().nextInt(1, 1000); // 1~999
             event.getChannel().sendMessage("🎲 " + n + " (1~999)").queue();
