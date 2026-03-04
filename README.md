@@ -1,121 +1,34 @@
-# Discord Dice Bot 🎲
+﻿# 🎲 discord-dice-bot
 
-디스코드에서 **버튼 + 모달 UI**로 주사위를 굴릴 수 있는 Java 기반 봇입니다.  
-기본 범위(1~999)로 빠르게 사용하거나, 범위를 직접 설정해 연속으로 랜덤 숫자를 생성할 수 있습니다.
-
----
-
-## 1) 프로젝트 개요
-
-- **프로젝트명**: Discord Dice Bot
-- **목적**: 텍스트 명령형 랜덤 기능을, 반복 사용에 편한 인터랙션 UI로 개선
-- **핵심 포인트**
-  - `!주사위` 입력 시 UI 패널 표시
-  - `🎲 굴리기` 버튼으로 같은 범위 연속 생성
-  - `⚙ 범위설정` 버튼으로 최소/최대 변경
-  - 범위 검증(최소 1, 최대 999, min ≤ max)
+Discord에서 버튼/모달 UI로 주사위를 굴릴 수 있는 Java(JDA) 기반 봇 프로젝트입니다.
 
 ---
 
-## 2) 기술 스택
+## 📌 프로젝트 목적
+- 슬래시/텍스트 명령 기반 기능을 인터랙션 UI로 개선
+- 범위 지정 랜덤 생성 로직과 입력 검증 로직 실습
 
-- **Language**: Java 17+
-- **Library**: JDA 5
-- **Build**: Gradle Wrapper (`gradlew`, `gradlew.bat`)
-- **Runtime**: Discord Bot API (Gateway Event 기반)
+## 🧱 기술 스택
+- Java 17+
+- JDA 5
+- Gradle Wrapper
 
----
+## ✨ 핵심 기능
+- `!주사위` 명령으로 주사위 패널 출력
+- 즉시 굴리기 버튼
+- 범위 설정 모달(min/max)
+- 입력값 검증(최소 1, 최대 999)
 
-## 3) 주요 기능
-
-### A. UI 기반 주사위
-- 명령어: `!주사위`
-- 봇이 임베드 패널 + 버튼 2개를 출력
-  - `🎲 굴리기`: 현재 범위로 즉시 결과 생성
-  - `⚙ 범위설정`: 모달 입력창으로 min/max 수정
-
-### B. 범위 검증
-- 최소값은 1 이상
-- 최대값은 999 이하
-- 최소값이 최대값보다 클 수 없음
-
-### C. 텍스트 명령 지원 (레거시)
-- `!랜덤`
-- `!랜덤 최소 최대` (예: `!랜덤 5 20`)
-
----
-
-## 4) 배포 (무료 플랜 - Render)
-
-`render.yaml`을 포함해놔서, Render에서 저장소만 연결하면 바로 워커로 배포됩니다.
-
-1. Render 가입/로그인
-2. **New + → Blueprint**
-3. GitHub 저장소 `zeroziba9-hash/discord-dice-bot` 선택
-4. 환경변수 `DISCORD_TOKEN` 입력
-5. Deploy
-
-> 배포 후에는 PC를 꺼도 봇이 계속 동작합니다.
-
-## 5) 로컬 실행 방법
-
-### 1) 저장소 클론
+## ⚡ 실행 방법
 ```bash
-git clone https://github.com/zeroziba9-hash/discord-dice-bot.git
-cd discord-dice-bot/discord-random-bot
-```
-
-### 2) 토큰 설정
-PowerShell:
-```powershell
-$env:DISCORD_TOKEN="여기에_봇_토큰"
-```
-
-또는 `.env.example` 참고해서 `.env` 생성
-
-### 3) 실행
-```bash
+cd discord-random-bot
 ./gradlew run
 ```
+(Windows: `gradlew.bat run`)
 
----
+## 📁 디렉토리 구조
+- `discord-random-bot/src` : 봇 소스 코드
+- `discord-random-bot/.env.example` : 환경변수 예시
 
-## 5) 디스코드 개발자 포털 설정
-
-- Bot 생성
-- **MESSAGE CONTENT INTENT** 활성화
-- OAuth2 URL Generator
-  - Scopes: `bot`, `applications.commands`
-  - Permissions: `Send Messages`, `Read Message History` (필요시 추가)
-
----
-
-## 6) 포트폴리오 관점에서의 개선 내용
-
-- 단순 텍스트 랜덤 명령에서 **버튼/모달 기반 인터랙션**으로 전환
-- 반복 사용 시 매번 명령어 재입력하지 않도록 **연속 사용 UX** 적용
-- 사용자 입력 오류를 줄이기 위한 **검증 로직** 추가
-- 실사용 서버에서 동작 확인 및 커맨드 흐름 점검
-
----
-
-## 7) 보안
-
-- 토큰은 코드에 하드코딩하지 않음
-- `.env`는 git 커밋 제외 대상
-- 토큰 노출 시 디스코드 포털에서 **즉시 Reset Token** 필요
-
----
-
-## 8) 디렉터리 구조
-
-```text
-discord-dice-bot/
-├─ discord-random-bot/
-│  ├─ src/main/java/org/example/Main.java
-│  ├─ build.gradle
-│  ├─ gradlew
-│  ├─ gradlew.bat
-│  └─ .env.example
-└─ README.md
-```
+## ✅ 상태
+- 기본 주사위/범위 랜덤 동작 구현 완료
